@@ -1,16 +1,28 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ChildrenOutletContexts, RouterModule, Routes } from '@angular/router';
+import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { HomeComponent } from './home/home.component';
+import { MainComponent } from './main.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch:'full'
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
+    component: MainComponent,
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'add-expense',
+        component: AddExpenseComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+    ],
   },
 ];
 

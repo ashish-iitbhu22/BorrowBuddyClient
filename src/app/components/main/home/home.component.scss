@@ -1,7 +1,7 @@
 .home-component{
-    .footer{
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-}
+    overflow-y: hidden;
+    padding-bottom: 3rem;
+    .recent-transection{
+    //   overflow-y: auto;
+    }
 }

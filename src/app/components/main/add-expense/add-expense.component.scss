@@ -1,0 +1,19 @@
+body {
+  font-family: "Work Sans", "Noto Sans", sans-serif;
+}
+
+button {
+  @apply cursor-pointer;
+  margin-bottom: 4rem;
+}
+
+input,
+textarea,
+select {
+  @apply w-full mt-2 p-3 text-[#0e151b] border border-[#d1dce6] rounded-lg bg-[#f8fafb] focus:outline-none focus:ring-2 focus:ring-[#2c90e2];
+}
+
+ .disbled {
+  pointer-events:none;
+    opacity: 50%;
+  }

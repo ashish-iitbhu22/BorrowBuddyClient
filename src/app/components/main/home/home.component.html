@@ -10,12 +10,13 @@
       Lending &amp; Owing
     </h2>
   </div>
-  <div class="flex flex-wrap gap-3 px-4 py-3">
+   <div class="recent-transection">
+     <div class="flex flex-wrap gap-3 px-4 py-3">
     <div
       class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#d1dce6] p-3 items-start"
     >
       <p class="text-[#0e151b] tracking-light text-2xl font-bold leading-tight">
-        $1,456.00
+         &#8377;{{totalOwe}}
       </p>
       <div class="flex items-center gap-2">
         <p class="text-[#507695] text-sm font-normal leading-normal">You owe</p>
@@ -25,7 +26,7 @@
       class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#d1dce6] p-3 items-start"
     >
       <p class="text-[#0e151b] tracking-light text-2xl font-bold leading-tight">
-        $2,908.00
+         &#8377;{{totalLent}}
       </p>
       <div class="flex items-center gap-2">
         <p class="text-[#507695] text-sm font-normal leading-normal">
@@ -34,16 +35,19 @@
       </div>
     </div>
   </div>
+   </div>
   <h2
     class="text-[#0e151b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
   >
     Recent activities
   </h2>
   <div
+   *ngFor="let item of expenseData"
     class="flex items-center gap-4 bg-[#f8fafb] px-4 min-h-[72px] py-2 justify-between"
   >
     <div class="flex items-center gap-4">
       <div
+      *ngIf="item?.type == 'lent'"
         class="text-[#0e151b] flex items-center justify-center rounded-lg bg-[#e8eef3] shrink-0 size-12"
         data-icon="ArrowLeft"
         data-size="24px"
@@ -61,28 +65,8 @@
           ></path>
         </svg>
       </div>
-      <div class="flex flex-col justify-center">
-        <p
-          class="text-[#0e151b] text-base font-medium leading-normal line-clamp-1"
-        >
-          Paid back $50
-        </p>
-        <p
-          class="text-[#507695] text-sm font-normal leading-normal line-clamp-2"
-        >
-          3 days ago
-        </p>
-      </div>
-    </div>
-    <div class="shrink-0">
-      <p class="text-[#0e151b] text-base font-normal leading-normal">$50.00</p>
-    </div>
-  </div>
-  <div
-    class="flex items-center gap-4 bg-[#f8fafb] px-4 min-h-[72px] py-2 justify-between"
-  >
-    <div class="flex items-center gap-4">
-      <div
+       <div
+       *ngIf="item?.type == 'owe'"
         class="text-[#0e151b] flex items-center justify-center rounded-lg bg-[#e8eef3] shrink-0 size-12"
         data-icon="ArrowRight"
         data-size="24px"
@@ -104,151 +88,20 @@
         <p
           class="text-[#0e151b] text-base font-medium leading-normal line-clamp-1"
         >
-          Borrowed $200
+          {{item?.type=='lent' ? 'Lent' : 'Owe to'}} {{item?.type=='lent' ? item?.friend2Name : item?.friend1Name}}
         </p>
         <p
           class="text-[#507695] text-sm font-normal leading-normal line-clamp-2"
         >
-          2 days ago
+          {{item?.diffInDays}} days ago
         </p>
       </div>
     </div>
     <div class="shrink-0">
-      <p class="text-[#0e151b] text-base font-normal leading-normal">$200.00</p>
+      <p class="text-[#0e151b] text-base font-normal leading-normal">&#8377;{{item?.amount}}</p>
     </div>
   </div>
-  <div
-    class="flex items-center gap-4 bg-[#f8fafb] px-4 min-h-[72px] py-2 justify-between"
-  >
-    <div class="flex items-center gap-4">
-      <div
-        class="text-[#0e151b] flex items-center justify-center rounded-lg bg-[#e8eef3] shrink-0 size-12"
-        data-icon="Bell"
-        data-size="24px"
-        data-weight="regular"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24px"
-          height="24px"
-          fill="currentColor"
-          viewBox="0 0 256 256"
-        >
-          <path
-            d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"
-          ></path>
-        </svg>
-      </div>
-      <div class="flex flex-col justify-center">
-        <p
-          class="text-[#0e151b] text-base font-medium leading-normal line-clamp-1"
-        >
-          Reminder to pay $300
-        </p>
-        <p
-          class="text-[#507695] text-sm font-normal leading-normal line-clamp-2"
-        >
-          in 5 days
-        </p>
-      </div>
-    </div>
-    <div class="shrink-0">
-      <p class="text-[#0e151b] text-base font-normal leading-normal">$300.00</p>
-    </div>
-  </div>
-  <div class="flex px-4 py-3">
-    <button
-      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 flex-1 bg-[#2c90e2] text-[#f8fafb] text-base font-bold leading-normal tracking-[0.015em]"
-    >
-      <span class="truncate">Get started</span>
-    </button>
-  </div>
-  <div class="footer flex gap-2 border-t border-[#e8eef3] bg-[#f8fafb] px-4 pb-3 pt-2">
-    <a
-      class="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#0e151b]"
-      href="#"
-    >
-      <div
-        class="text-[#0e151b] flex h-8 items-center justify-center"
-        data-icon="House"
-        data-size="24px"
-        data-weight="fill"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24px"
-          height="24px"
-          fill="currentColor"
-          viewBox="0 0 256 256"
-        >
-          <path
-            d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"
-          ></path>
-        </svg>
-      </div>
-      <p
-        class="text-[#0e151b] text-xs font-medium leading-normal tracking-[0.015em]"
-      >
-        Home
-      </p>
-    </a>
-    <a
-      class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#507695]"
-      href="#"
-    >
-      <div
-        class="text-[#507695] flex h-8 items-center justify-center"
-        data-icon="PlusCircle"
-        data-size="24px"
-        data-weight="regular"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24px"
-          height="24px"
-          fill="currentColor"
-          viewBox="0 0 256 256"
-        >
-          <path
-            d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm48-88a8,8,0,0,1-8,8H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32A8,8,0,0,1,176,128Z"
-          ></path>
-        </svg>
-      </div>
-      <p
-        class="text-[#507695] text-xs font-medium leading-normal tracking-[0.015em]"
-      >
-        Add Expense
-      </p>
-    </a>
-    <a
-      class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#507695]"
-      href="#"
-    >
-      <div
-        class="text-[#507695] flex h-8 items-center justify-center"
-        data-icon="User"
-        data-size="24px"
-        data-weight="regular"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24px"
-          height="24px"
-          fill="currentColor"
-          viewBox="0 0 256 256"
-        >
-          <path
-            d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"
-          ></path>
-        </svg>
-      </div>
-      <p
-        class="text-[#507695] text-xs font-medium leading-normal tracking-[0.015em]"
-      >
-        Profile
-      </p>
-    </a>
-  </div>
+ 
   <div class="h-5 bg-[#f8fafb]"></div>
 </div>
 </div>

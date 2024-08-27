@@ -148,7 +148,7 @@ export class SinUpComponent implements OnInit {
         this.ctaDisable = false;
         console.log(res);
         if (res && res.success) {
-          this.route.navigate(['/main/home']);
+          this.route.navigate(['/login/signIn']);
         } else {
           this.errorMessage = res?.message;
         }

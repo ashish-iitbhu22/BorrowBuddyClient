@@ -1,0 +1,46 @@
+<div class="relative flex flex-col min-h-screen p-6 bg-[#f8fafb]">
+  <div class="flex items-center justify-between pb-4">
+    <h2 class="text-lg font-bold text-center text-[#0e151b]">Add Expense</h2>
+  </div>
+  <!-- Friend's Name -->
+  <form [formGroup]="expenseForm">
+    <div class="mb-4">
+    <label for="friendName" class="block text-sm font-medium text-[#0e151b]">Friend's Name</label>
+    <input type="text" id="friendName" formControlName="friendName" name="friendName" placeholder="Enter friend's name" class="block w-full mt-2 p-3 text-[#0e151b] border border-[#d1dce6] rounded-lg bg-[#f8fafb] focus:outline-none focus:ring-2 focus:ring-[#2c90e2]">
+  </div>
+
+  <!-- Friend's Number -->
+  <div class="mb-4">
+    <label for="friendNumber" class="block text-sm font-medium text-[#0e151b]">Friend's Number</label>
+    <input type="number" id="friendNumber" formControlName="friendNumber" name="friendNumber" placeholder="Enter friend's number" class="block w-full mt-2 p-3 text-[#0e151b] border border-[#d1dce6] rounded-lg bg-[#f8fafb] focus:outline-none focus:ring-2 focus:ring-[#2c90e2]">
+  </div>
+
+  <!-- Dropdown -->
+  <div class="mb-4">
+    <label for="transactionType" class="block text-sm font-medium text-[#0e151b]">Transaction Type</label>
+    <select formControlName="transactionType" id="transactionType" name="transactionType" class="block w-full mt-2 p-3 text-[#0e151b] border border-[#d1dce6] rounded-lg bg-[#f8fafb] focus:outline-none focus:ring-2 focus:ring-[#2c90e2]">
+      <option selected value="lent">You lent</option>
+      <option value="owe">You owe</option>
+    </select>
+  </div>
+
+   <!-- Amount -->
+  <div class="mb-4">
+    <label for="amount" class="block text-sm font-medium text-[#0e151b]">Amount</label>
+    <input type="number" id="amount" formControlName="amount" name="amount" placeholder="Enter amount" class="block w-full mt-2 p-3 text-[#0e151b] border border-[#d1dce6] rounded-lg bg-[#f8fafb] focus:outline-none focus:ring-2 focus:ring-[#2c90e2]">
+  </div>
+
+  <!-- Description -->
+  <div class="mb-6">
+    <label for="description" class="block text-sm font-medium text-[#0e151b]">Description</label>
+    <textarea id="description" name="description" formControlName="desc" placeholder="Enter description" rows="4" class="block w-full mt-2 p-3 text-[#0e151b] border border-[#d1dce6] rounded-lg bg-[#f8fafb] focus:outline-none focus:ring-2 focus:ring-[#2c90e2]"></textarea>
+  </div>
+  </form>
+
+  <!-- Submit Button -->
+  <div class="flex justify-center">
+    <button  [class.disbled]="ctaDisable || expenseForm.invalid" (click)="addExpense()" class="w-full max-w-xs px-4 py-3 font-bold text-[#f8fafb] bg-[#2c90e2] rounded-lg hover:bg-[#2377ba] focus:outline-none focus:ring-2 focus:ring-[#2c90e2]">
+      Add Expense
+    </button>
+  </div>
+</div>

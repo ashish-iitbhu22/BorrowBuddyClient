@@ -12,6 +12,14 @@ export class AuthService {
   }
 
   sinIn(payload: any) {
-    return this.httpClient.post('http://localhost:3000/sinin', payload);
+    return this.httpClient.post('http://localhost:3000/sinin', payload, {
+      withCredentials: true,
+    });
+  }
+
+  getProfile(){
+     return this.httpClient.get('http://localhost:3000/profile', {
+       withCredentials: true,
+     });
   }
 }
