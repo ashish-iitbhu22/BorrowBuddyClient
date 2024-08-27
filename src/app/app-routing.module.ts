@@ -24,6 +24,11 @@ const routes: Routes = [
       import('./components/main/main.module').then((m) => m.MainModule),
     canActivate: [ProfileGuard],
   },
+  {
+    path: '**',
+    redirectTo: '/main',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
