@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: borrowbuddyclient
+    env: static
+    static_publish_path: dist/borrow-buddy-client
+    routes:
+      - type: rewrite
+        source: '.*'
+        destination: '/index.html'
