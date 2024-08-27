@@ -10,7 +10,7 @@ export class MainComponent implements OnInit {
   constructor(private route: Router) {}
 
   ngOnInit(): void {
-    this.route.navigate(['/main/home']);
+   
   }
 
   navigateTo(path:string) {
