@@ -103,6 +103,7 @@ export class SinInComponent implements OnInit {
         this.ctaDisable = false;
         console.log(res);
         if (res && res.success) {
+          this.authService.setToken(res.token);
           this.route.navigate(['/main/home']);
         } else {
           this.errorMessage = res?.message;

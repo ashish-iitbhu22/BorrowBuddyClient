@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
+  authToken = '';
   constructor(private httpClient: HttpClient) {}
 
   sinUp(payload: any) {
@@ -13,14 +14,18 @@ export class AuthService {
   }
 
   sinIn(payload: any) {
-    return this.httpClient.post(`${environment.API_HOST}/sinin`, payload, {
-      withCredentials: true,
-    });
+    return this.httpClient.post(`${environment.API_HOST}/sinin`, payload);
   }
 
-  getProfile(){
-     return this.httpClient.get(`${environment.API_HOST}/profile`, {
-       withCredentials: true,
-     });
+  getProfile() {
+    return this.httpClient.get(`${environment.API_HOST}/profile`);
+  }
+
+  setToken(token: any) {
+    this.authToken = token;
+  }
+
+  getToken() {
+    return this.authToken;
   }
 }

@@ -10,14 +10,10 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   addExpense(payload: any) {
-    return this.httpClient.post(`${environment.API_HOST}/expense`, payload, {
-      withCredentials: true,
-    });
+    return this.httpClient.post(`${environment.API_HOST}/expense`, payload);
   }
   getExpense() {
-    return this.httpClient.get(`${environment.API_HOST}/expense`, {
-      withCredentials: true,
-    });
+    return this.httpClient.get(`${environment.API_HOST}/expense`);
   }
 
   setProfile(data:any) {
