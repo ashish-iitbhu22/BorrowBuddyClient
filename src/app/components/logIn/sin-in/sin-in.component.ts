@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { distinctUntilChanged } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -21,7 +22,9 @@ export class SinInComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private route: Router
+    private route: Router,
+    private localstorageService: LocalStorageService
+
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +82,7 @@ export class SinInComponent implements OnInit {
       });
   }
 
-  navigateToSignUp(){
+  navigateToSignUp() {
     this.route.navigate(['/login/signUp']);
   }
 
@@ -104,6 +107,9 @@ export class SinInComponent implements OnInit {
         console.log(res);
         if (res && res.success) {
           this.authService.setToken(res.token);
+          this.localstorageService.addItem('borrowbuddy', {
+            auth_token: res.token,
+          });
           this.route.navigate(['/main/home']);
         } else {
           this.errorMessage = res?.message;
@@ -111,7 +117,7 @@ export class SinInComponent implements OnInit {
       },
       (err) => {
         this.ctaDisable = false;
-        this.errorMessage = err.error.message;
+        this.errorMessage = 'err.error.message';
       }
     );
   }
