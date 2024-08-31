@@ -1,23 +1,55 @@
 <div class="flex flex-col items-center p-6 bg-[#f8fafb] min-h-screen">
   <!-- Display Picture -->
   <div class="relative">
-    <img src="assets/Image/avtar.png" alt="Profile Picture" class="w-24 h-24 rounded-full border-4 border-[#2c90e2]">
+    <img
+      [src]="profileData?.profileImage"
+      alt="Profile Picture"
+      class="w-24 h-24 rounded-full border-4 border-[#2c90e2]"
+    />
     <!-- Edit DP Button -->
-    <button class="absolute bottom-0 right-0 w-8 h-8 bg-[#2c90e2] text-white rounded-full flex items-center justify-center shadow-md hover:bg-[#2377ba] focus:outline-none focus:ring-2 focus:ring-[#2c90e2]">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-        <path d="M12.146.854a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708L3.354 14.646a.5.5 0 0 1-.11.07L1.63 15.26a.5.5 0 0 1-.786-.547L1.214 14l1.048-2.504a.5.5 0 0 1 .074-.104L12.146.854zM4.535 11.207l9.38-9.38-1.07-1.07-9.38 9.38L3.47 12.7l1.065-1.065zM1 14.5a.5.5 0 0 1 .5-.5h1.732l1.128-1.128-1.731-1.731L1.5 13v1.5a.5.5 0 0 1-.5.5h1.5v-1z"/>
+    <button
+      onclick="document.getElementById('imageUpload').click()"
+      class="absolute bottom-0 right-0 w-8 h-8 bg-[#2c90e2] text-white rounded-full flex items-center justify-center shadow-md hover:bg-[#2377ba] focus:outline-none focus:ring-2 focus:ring-[#2c90e2]"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-pencil"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M12.146.854a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708L3.354 14.646a.5.5 0 0 1-.11.07L1.63 15.26a.5.5 0 0 1-.786-.547L1.214 14l1.048-2.504a.5.5 0 0 1 .074-.104L12.146.854zM4.535 11.207l9.38-9.38-1.07-1.07-9.38 9.38L3.47 12.7l1.065-1.065zM1 14.5a.5.5 0 0 1 .5-.5h1.732l1.128-1.128-1.731-1.731L1.5 13v1.5a.5.5 0 0 1-.5.5h1.5v-1z"
+        />
       </svg>
     </button>
   </div>
 
   <!-- User Information -->
   <div class="text-center mt-6">
-    <h2 class="text-xl font-bold text-[#0e151b]">{{profileData?.fullName}}</h2>
-    <p class="text-sm text-[#507695]">+91 {{profileData?.phone}}</p>
+    <h2 class="text-xl font-bold text-[#0e151b]">
+      {{ profileData?.fullName }}
+    </h2>
+    <p class="text-sm text-[#507695]">+91 {{ profileData?.phone }}</p>
   </div>
 
   <!-- Logout Button -->
-  <button (click)="logOut()" class="mt-8 w-full max-w-xs px-4 py-3 font-bold text-[#f8fafb] bg-[#e63946] rounded-lg hover:bg-[#d62839] focus:outline-none focus:ring-2 focus:ring-[#e63946]">
+  <button
+    (click)="logOut()"
+    class="mt-8 w-full max-w-xs px-4 py-3 font-bold text-[#f8fafb] bg-[#e63946] rounded-lg hover:bg-[#d62839] focus:outline-none focus:ring-2 focus:ring-[#e63946]"
+  >
     Logout
   </button>
+  <div class="hidden">
+    <input
+      #fileInput1
+      type="file"
+      style="display: none"
+      (change)="uploadWinners(fileInput1)"
+      id="imageUpload"
+      type="file"
+       accept="image/*"
+    />
+  </div>
 </div>

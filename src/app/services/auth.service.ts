@@ -20,6 +20,16 @@ export class AuthService {
   getProfile() {
     return this.httpClient.get(`${environment.API_HOST}/profile`);
   }
+  setProfile(payload:any) {
+    return this.httpClient.post(`${environment.API_HOST}/profile`, payload);
+  }
+
+  addProfileImage(formdata: any) {
+    return this.httpClient.post(
+      `${environment.API_HOST}/imageUpload`,
+      formdata
+    );
+  }
 
   setToken(token: any) {
     this.authToken = token;

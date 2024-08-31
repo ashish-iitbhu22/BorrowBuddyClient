@@ -29,8 +29,8 @@ export class ProfileGuard implements CanActivate {
     console.log('Guard is activated');
 
     return this.authService.getProfile().pipe(
-      map((profile) => {
-        if (profile) {
+      map((profile:any) => {
+        if (profile && profile.success) {
           this.userService.setProfile(profile);
           return true;
         } else {

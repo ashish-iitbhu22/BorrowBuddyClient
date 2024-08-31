@@ -22,6 +22,11 @@ export class HomeComponent implements OnInit {
     this.userService.getExpense().subscribe(
       (res: any) => {
        this.expenseData = res?.UserData;
+       this.expenseData.sort((a:any,b:any)=>{
+         return (
+           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+         );
+       })
        this.expenseData.forEach((element: any) => {
          if (element.friend1Phone == this.profileData.phone) {
            element.type = 'lent';
