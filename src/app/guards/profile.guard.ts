@@ -30,7 +30,7 @@ export class ProfileGuard implements CanActivate {
 
     return this.authService.getProfile().pipe(
       map((profile:any) => {
-        if (profile && profile.success) {
+        if (profile && profile.phone) {
           this.userService.setProfile(profile);
           return true;
         } else {
