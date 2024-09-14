@@ -6,7 +6,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class UserService {
-  profileData:any
+  profileData: any;
+  personalExpense:any
   constructor(private httpClient: HttpClient) {}
 
   addExpense(payload: any) {
@@ -16,11 +17,18 @@ export class UserService {
     return this.httpClient.get(`${environment.API_HOST}/expense`);
   }
 
-  setProfile(data:any) {
+  setProfile(data: any) {
     this.profileData = data;
   }
 
   getProfile() {
     return this.profileData;
+  }
+
+  setPersonalExpense(data:any) {
+    this.personalExpense = data
+  }
+  getPersonalExpense() {
+    return this.personalExpense;
   }
 }

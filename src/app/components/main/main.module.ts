@@ -8,10 +8,11 @@ import { HomeComponent } from './home/home.component';
 import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FriendsComponent } from './friends/friends.component';
 
 
 @NgModule({
-  declarations: [MainComponent, HomeComponent, AddExpenseComponent, ProfileComponent],
+  declarations: [MainComponent, HomeComponent, AddExpenseComponent, ProfileComponent, FriendsComponent],
   imports: [HttpClientModule, CommonModule,FormsModule,
     ReactiveFormsModule, MainRoutingModule],
 })

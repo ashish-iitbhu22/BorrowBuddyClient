@@ -36,13 +36,23 @@
     </div>
   </div>
    </div>
+
+   <div class="w-full px-4 py-2">
+      <button
+      (click)="navigateTo('friend')"
+        class="w-full bg-[#4a90e2] hover:bg-[#357ABD] text-white font-bold py-3 px-4 rounded-lg shadow-lg transition-all duration-200"
+      >
+        Borrowbuddy Friends
+      </button>
+    </div>
+
   <h2
     class="text-[#0e151b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
   >
     Recent activities
   </h2>
   <div
-   *ngFor="let item of expenseData"
+   *ngFor="let item of recentData"
     class="flex items-center gap-4 bg-[#f8fafb] px-4 min-h-[72px] py-2 justify-between"
   >
     <div class="flex items-center gap-4">

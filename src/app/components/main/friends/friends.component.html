@@ -1,0 +1,25 @@
+<div class=" friends-component p-6 bg-[#f8fafb] min-h-screen">
+  <h2 class="text-xl font-bold text-[#0e151b] mb-4 text-center">Friend List</h2>
+
+  <div class="">
+    <table class="min-w-full bg-white rounded-lg shadow-lg overflow-hidden">
+      <thead class="bg-[#f0f4f8]">
+        <tr>
+          <th class="py-3 px-6 text-left text-sm font-semibold text-[#0e151b] uppercase">Phone Number</th>
+          <th class="py-3 px-6 text-left text-sm font-semibold text-[#0e151b] uppercase">Name</th>
+          <th class="py-3 px-6 text-left text-sm font-semibold text-[#0e151b] uppercase">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngFor to loop through the object -->
+        <tr *ngFor="let item of friendExpensedata | keyvalue" class="border-b border-[#e8eef3]">
+          <td class="py-2 px-3 text-sm text-[#507695]">{{ item.key }}</td>
+          <td class="py-3 px-3 text-sm text-[#0e151b]">{{ item.value.name }}</td>
+          <td class="py-3 px-3 text-sm font-bold" [ngClass]="{'text-green-500': item.value.amount > 0, 'text-red-500': item.value.amount < 0}">
+           {{ item.value.amount | currency }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
