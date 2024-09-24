@@ -9,10 +9,11 @@ import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FriendsComponent } from './friends/friends.component';
+import { FriendExpenseComponent } from './friend-expense/friend-expense.component';
 
 
 @NgModule({
-  declarations: [MainComponent, HomeComponent, AddExpenseComponent, ProfileComponent, FriendsComponent],
+  declarations: [MainComponent, HomeComponent, AddExpenseComponent, ProfileComponent, FriendsComponent,FriendExpenseComponent],
   imports: [HttpClientModule, CommonModule,FormsModule,
     ReactiveFormsModule, MainRoutingModule],
 })

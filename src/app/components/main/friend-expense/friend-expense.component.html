@@ -1,0 +1,84 @@
+<div class="container mx-auto p-4">
+  <!-- Page Heading -->
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-xl font-bold">{{routingData?.name}} Transaction</h2>
+  </div>
+
+  <!-- List of Expenses -->
+  <div
+    *ngFor="let item of expenseData"
+    class="flex items-center gap-4 bg-[#f8fafb] px-4 min-h-[72px] py-2 justify-between border-b border-gray-200"
+  >
+    <!-- Type Indicator -->
+    <div class="flex items-center gap-4">
+      <div
+        *ngIf="item?.type == 'lent'"
+        class="text-[#0e151b] flex items-center justify-center rounded-lg bg-[#e8eef3] shrink-0 size-12"
+        data-icon="ArrowLeft"
+        data-size="24px"
+        data-weight="regular"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24px"
+          height="24px"
+          fill="currentColor"
+          viewBox="0 0 256 256"
+        >
+          <path
+            d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"
+          ></path>
+        </svg>
+      </div>
+      <div
+        *ngIf="item?.type == 'owe'"
+        class="text-[#0e151b] flex items-center justify-center rounded-lg bg-[#e8eef3] shrink-0 size-12"
+        data-icon="ArrowRight"
+        data-size="24px"
+        data-weight="regular"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24px"
+          height="24px"
+          fill="currentColor"
+          viewBox="0 0 256 256"
+        >
+          <path
+            d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"
+          ></path>
+        </svg>
+      </div>
+      <div class="flex flex-col justify-center">
+        <p class="text-[#0e151b] text-base font-medium leading-normal line-clamp-1">
+          {{item?.type == 'lent' ? 'Lent' : 'Owe to'}} {{item?.type == 'lent' ? item?.friend2Name : item?.friend1Name}}
+        </p>
+        <p class="text-[#507695] text-sm font-normal leading-normal line-clamp-2">
+          {{item?.diffInDays}} days ago
+        </p>
+      </div>
+    </div>
+
+    <!-- Amount -->
+    <div class="shrink-0">
+       <p class="text-[#0e151b] text-base font-normal leading-normal" [ngClass]="{'text-green-500': item?.type=='lent', 'text-red-500': item?.type=='owe'}">{{item?.amount  | currency: 'INR'}}</p>
+    </div>
+
+    <!-- Action Icons -->
+    <div class="flex items-center gap-4">
+      <!-- Edit Icon -->
+      <button (click)="editItem(item)" class="text-blue-500 hover:text-blue-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 13l3.536 3.536M15.232 5.232a2.828 2.828 0 114 4L9 17H5v-4l10.232-10.232z"/>
+        </svg>
+      </button>
+
+      <!-- Delete Icon -->
+      <button (click)="deleteItem(item)" class="text-red-500 hover:text-red-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

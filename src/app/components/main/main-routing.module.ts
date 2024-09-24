@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ChildrenOutletContexts, RouterModule, Routes } from '@angular/router';
 import { AddExpenseComponent } from './add-expense/add-expense.component';
+import { FriendExpenseComponent } from './friend-expense/friend-expense.component';
 import { FriendsComponent } from './friends/friends.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main.component';
@@ -28,9 +29,13 @@ const routes: Routes = [
         component: ProfileComponent,
       },
       {
-        path:'friends',
-        component:FriendsComponent
-      }
+        path: 'friends',
+        component: FriendsComponent,
+      },
+      {
+        path: 'friends-expense',
+        component: FriendExpenseComponent,
+      },
     ],
   },
 ];

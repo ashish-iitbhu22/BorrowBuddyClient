@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private route: Router
+    private route: Router,
+    private localstorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -23,7 +25,12 @@ export class ProfileComponent implements OnInit {
   }
 
   logOut() {
-    this.removeCookie('auth_token');
+    this.localstorageService.removeItem('borrowbuddy');
+    this.authService.sinOut({}).subscribe((res: any) => {
+      if (res) {
+        this.route.navigate(['/login/signIn']);
+      }
+    });
     this.route.navigate(['/login/signIn']);
   }
   removeCookie(name: string) {
@@ -40,7 +47,7 @@ export class ProfileComponent implements OnInit {
         this.authService
           .setProfile({ profileImage: this.imgUrl })
           .subscribe((res) => {
-            if(res){
+            if (res) {
               this.userService.setProfile(res);
               this.profileData = res;
             }

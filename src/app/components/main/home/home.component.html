@@ -108,7 +108,7 @@
       </div>
     </div>
     <div class="shrink-0">
-      <p class="text-[#0e151b] text-base font-normal leading-normal">&#8377;{{item?.amount}}</p>
+      <p class="text-[#0e151b] text-base font-normal leading-normal" [ngClass]="{'text-green-500': item?.type=='lent', 'text-red-500': item?.type=='owe'}">{{item?.amount  | currency: 'INR'}}</p>
     </div>
   </div>
  

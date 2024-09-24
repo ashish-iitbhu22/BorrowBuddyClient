@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 interface Friend {
   name: string;
@@ -14,7 +15,8 @@ export class FriendsComponent implements OnInit {
   friendExpensedata: { [key: string]: Friend } = {};
   expenseData: any;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,
+    private router:Router) {}
 
   ngOnInit(): void {
     this.expenseData = this.userService.getPersonalExpense();
@@ -38,5 +40,18 @@ export class FriendsComponent implements OnInit {
       }
     });
     console.log(this.friendExpensedata);
+  }
+
+  navigate(item:any,value:any){
+    let data = {
+      phone: item,
+      ...value
+    }
+    this.router.navigate(['/main/friends-expense'], {
+      queryParams: {
+        type: 'friend',
+        data: JSON.stringify(data),
+      },
+    });
   }
 }

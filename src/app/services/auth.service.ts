@@ -17,6 +17,10 @@ export class AuthService {
     return this.httpClient.post(`${environment.API_HOST}/sinin`, payload);
   }
 
+  sinOut(payload: any) {
+    return this.httpClient.post(`${environment.API_HOST}/sinOut`, payload);
+  }
+ 
   getProfile() {
     return this.httpClient.get(`${environment.API_HOST}/profile`);
   }
