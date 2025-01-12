@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { logInRoutingModule } from './logIn-routing.module';
-import { SinInComponent } from './sin-in/sin-in.component';
-import { SinUpComponent } from './sin-up/sin-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sgin-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
-  declarations: [SinInComponent, SinUpComponent],
+  declarations: [SignInComponent, SignUpComponent],
   imports: [
     HttpClientModule,
     CommonModule,

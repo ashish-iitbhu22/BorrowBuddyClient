@@ -5,13 +5,14 @@ import { distinctUntilChanged } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 @Component({
-  selector: 'app-sin-in',
-  templateUrl: './sin-in.component.html',
-  styleUrls: ['./sin-in.component.scss'],
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss'],
 })
-export class SinInComponent implements OnInit {
+export class SignInComponent implements OnInit {
   sinUpForm!: FormGroup;
   oldName = '';
   errorMessage = '';
@@ -24,7 +25,6 @@ export class SinInComponent implements OnInit {
     private authService: AuthService,
     private route: Router,
     private localstorageService: LocalStorageService
-
   ) {}
 
   ngOnInit(): void {
@@ -120,5 +120,25 @@ export class SinInComponent implements OnInit {
         this.errorMessage = 'err.error.message';
       }
     );
+  }
+
+  loginWithGoogle() {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // Get the user info
+        console.log('Result is', result);
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        const user = result.user;
+
+        console.log('Token:', token);
+        console.log('User:', user);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 }

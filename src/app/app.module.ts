@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { initializeApp } from 'firebase/app';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,4 +26,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+     initializeApp(environment.firebaseConfig);
+  }
+}

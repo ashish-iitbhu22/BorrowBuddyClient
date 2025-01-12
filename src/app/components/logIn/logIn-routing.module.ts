@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SinInComponent } from './sin-in/sin-in.component';
-import { SinUpComponent } from './sin-up/sin-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sgin-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -11,16 +11,16 @@ const routes: Routes = [
   },
   {
     path: 'signIn',
-    component: SinInComponent,
+    component: SignInComponent,
   },
   {
     path: 'signUp',
-    component: SinUpComponent,
+    component: SignUpComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class logInRoutingModule { }
+export class logInRoutingModule {}

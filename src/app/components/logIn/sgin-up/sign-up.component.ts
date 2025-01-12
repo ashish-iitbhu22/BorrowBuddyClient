@@ -6,11 +6,11 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-sin-up',
-  templateUrl: './sin-up.component.html',
-  styleUrls: ['./sin-up.component.scss'],
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss'],
 })
-export class SinUpComponent implements OnInit {
+export class SignUpComponent implements OnInit {
   sinUpForm!: FormGroup;
   oldName = '';
   allowedValues = [6, 7, 8, 9];
@@ -78,7 +78,7 @@ export class SinUpComponent implements OnInit {
       .get('phone')
       ?.valueChanges.pipe(distinctUntilChanged())
       .subscribe((value: any) => {
-          this.errorMessage = '';
+        this.errorMessage = '';
         if (!/^[0-9]*$/.test(value.toString().substr(-1))) {
           this.sinUpForm.get('phone')?.setValue(value.toString().slice(0, -1));
         }
@@ -99,30 +99,30 @@ export class SinUpComponent implements OnInit {
       });
   }
 
-  detectPasswordChange(){
-     this.sinUpForm
-       .get('password')
-       ?.valueChanges.pipe(distinctUntilChanged())
-       .subscribe((value: any) => {
+  detectPasswordChange() {
+    this.sinUpForm
+      .get('password')
+      ?.valueChanges.pipe(distinctUntilChanged())
+      .subscribe((value: any) => {
         this.errorMessage = '';
         if (value === this.sinUpForm.get('repassword')?.value) {
           this.ctaDisable = false;
-        }else{
-           this.ctaDisable = true
+        } else {
+          this.ctaDisable = true;
         }
-       });
+      });
 
-        this.sinUpForm
-          .get('repassword')
-          ?.valueChanges.pipe(distinctUntilChanged())
-          .subscribe((value: any) => {
-              this.errorMessage = '';
-              if (value === this.sinUpForm.get('password')?.value) {
-                this.ctaDisable = false;
-              }else{
-                 this.ctaDisable = true;
-              }
-          });
+    this.sinUpForm
+      .get('repassword')
+      ?.valueChanges.pipe(distinctUntilChanged())
+      .subscribe((value: any) => {
+        this.errorMessage = '';
+        if (value === this.sinUpForm.get('password')?.value) {
+          this.ctaDisable = false;
+        } else {
+          this.ctaDisable = true;
+        }
+      });
   }
   togglePasswordVisibility(passwordInput: HTMLInputElement): void {
     const isPassword = passwordInput.type === 'password';
