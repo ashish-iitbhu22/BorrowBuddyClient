@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  API_HOST: 'https://borrowbuddyserver.onrender.com',
+  API_HOST: 'http://localhost:3000',
   firebaseConfig: {
     apiKey: 'AIzaSyBVDgT_ya_kxLxk0jpX3KUWDGRiBSpH7Jk',
     authDomain: 'borrowbuddyclient.firebaseapp.com',
