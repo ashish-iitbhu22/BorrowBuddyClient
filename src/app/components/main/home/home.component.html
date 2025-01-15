@@ -7,7 +7,7 @@
     <h2
       class="text-[#0e151b] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12 pr-12"
     >
-      Lending &amp; Owing
+      Hello {{profileData?.fullName}}
     </h2>
   </div>
    <div class="recent-transection">
@@ -15,8 +15,8 @@
     <div
       class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#d1dce6] p-3 items-start"
     >
-      <p class="text-green-500 tracking-light text-2xl font-bold leading-tight">
-         &#8377;{{totalOwe}}
+      <p class="text-red-500 tracking-light text-2xl font-bold leading-tight">
+         &#8377;{{totalLent}}
       </p>
       <div class="flex items-center gap-2">
         <p class="text-[#507695] text-sm font-normal leading-normal">You owe</p>
@@ -25,8 +25,8 @@
     <div
       class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#d1dce6] p-3 items-start"
     >
-      <p class="text-red-500 tracking-light text-2xl font-bold leading-tight">
-         &#8377;{{totalLent}}
+      <p class="text-green-500 tracking-light text-2xl font-bold leading-tight">
+         &#8377;{{totalOwe}}
       </p>
       <div class="flex items-center gap-2">
         <p class="text-[#507695] text-sm font-normal leading-normal">
